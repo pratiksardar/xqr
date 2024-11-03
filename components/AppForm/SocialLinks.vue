@@ -157,9 +157,9 @@
       <QrCode :text="link.url" />
       </Modal>
     </div> -->
-    <!-- Github -->
-    <div>
-      <label for="github" class="block text-sm font-medium text-gray-700">Github</label>
+<!-- GitHub -->
+<div>
+      <label for="github" class="block text-sm font-medium text-gray-700">GitHub</label>
       <div class="mt-1 flex rounded-md shadow-sm">
         <span
           class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
@@ -171,8 +171,7 @@
           type="url"
           name="github"
           id="github"
-          :value="github"
-          @input="$emit('update:github', $event.target.value)"
+          v-model="github"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="https://github.com/username"
         />
@@ -196,8 +195,7 @@
           type="url"
           name="discord"
           id="discord"
-          :value="discord"
-          @input="$emit('update:discord', $event.target.value)"
+          v-model="discord"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="https://discord.com/users/username"
         />
@@ -221,8 +219,7 @@
           type="url"
           name="telegram"
           id="telegram"
-          :value="telegram"
-          @input="$emit('update:telegram', $event.target.value)"
+          v-model="telegram"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="https://t.me/username"
         />
@@ -234,26 +231,25 @@
 
     <!-- Farcaster -->
     <div>
-      <label for="wrapcast" class="block text-sm font-medium text-gray-700">Farcaster</label>
+      <label for="farcaster" class="block text-sm font-medium text-gray-700">Farcaster/Warpcast</label>
       <div class="mt-1 flex rounded-md shadow-sm">
         <span
           class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
-          @click="showQRCode(wrapcast)"
+          @click="showQRCode(farcaster)"
         >
-          <Icon icon="gravity-ui:tv-retro" class="w-5 h-5" />
+          <Icon icon="material-symbols:garage-door-rounded" class="w-5 h-5" />
         </span>
         <input
           type="url"
-          name="wrapcast"
-          id="wrapcast"
-          :value="wrapcast"
-          @input="$emit('update:wrapcast', $event.target.value)"
+          name="farcaster"
+          id="farcaster"
+          v-model="farcaster"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          placeholder="https://wrapcast.com/username"
+          placeholder="https://warpcast.com/username"
         />
       </div>
-      <Modal :visible="qrCodeUrl === wrapcast" @close="qrCodeUrl = null">
-        <QrCode :text="wrapcast" />
+      <Modal :visible="qrCodeUrl === farcaster" @close="qrCodeUrl = null">
+        <QrCode :text="farcaster" />
       </Modal>
     </div>
   </div>

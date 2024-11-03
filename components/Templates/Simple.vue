@@ -68,6 +68,11 @@
           <Icon icon="ph:linkedin-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
+      <span v-if="acc.fc" class="p-1">
+        <div @click="showQRCode(acc.fc, 'Farcaster')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="material-symbols:garage-door-rounded" class="h-8 w-8" />
+        </div>
+      </span>
     </div>
     <ul class="space-y-2">
       <ExternalLink
@@ -117,7 +122,8 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.y &&
     !props.acc.e &&
     !props.acc.gh &&
-    !props.acc.l
+    !props.acc.l &&
+    !props.acc.fc
   );
 });
 </script>
