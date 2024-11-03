@@ -19,58 +19,53 @@
       class="flex items-center justify-center flex-wrap"
     >
       <span v-if="acc.f" class="p-1">
-        <div @click="showQRCode(acc.f, 'Facebook')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+        <div @click="showQRCode(`https://facebook.com/${acc.f}`, 'Facebook')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:facebook-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
       <span v-if="acc.t" class="p-1">
-        <div @click="showQRCode(acc.t, 'Twitter')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+        <div @click="showQRCode(`https://twitter.com/${acc.t}`, 'Twitter')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:twitter-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
       <span v-if="acc.ig" class="p-1">
-        <div @click="showQRCode(acc.ig, 'Instagram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+        <div @click="showQRCode(`https://instagram.com/${acc.ig}`, 'Instagram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:instagram-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
-      <span v-if="acc.m" class="p-1">
-        <div @click="showQRCode(acc.m, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:envelope-duotone" class="h-8 w-8" />
+      <span v-if="acc.gh" class="p-1">
+        <div @click="showQRCode(`https://github.com/${acc.gh}`, 'GitHub')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:github-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.dc" class="p-1">
+        <div @click="showQRCode(`https://discord.com/users/${acc.dc}`, 'Discord')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:discord-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
       <span v-if="acc.tg" class="p-1">
-        <div @click="showQRCode(acc.tg, 'Telegram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+        <div @click="showQRCode(`https://t.me/${acc.tg}`, 'Telegram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:telegram-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.fc" class="p-1">
+        <div @click="showQRCode(`https://farcaster.xyz/${acc.fc}`, 'Farcaster')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="material-symbols:fort-outline" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.ph" class="p-1">
+        <div @click="showQRCode(`tel:${acc.ph}`, 'Phone')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:phone" class="h-8 w-8" />
         </div>
       </span>
       <span v-if="acc.w" class="p-1">
         <div @click="showQRCode(`https://wa.me/${acc.w}`, 'WhatsApp')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:whatsapp-logo-duotone" class="h-8 w-8" />
+          <Icon icon="mdi:whatsapp" class="h-8 w-8" />
         </div>
       </span>
-      <span v-if="acc.y" class="p-1">
-        <div @click="showQRCode(acc.y, 'YouTube')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:youtube-logo-duotone" class="h-8 w-8" />
-        </div>
-      </span>
-      <span v-if="acc.e" class="p-1">
-        <div @click="showQRCode(`mailto:${acc.e}`, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:envelope-duotone" class="h-8 w-8" />
-        </div>
-      </span>
-      <span v-if="acc.gh" class="p-1">
-        <div @click="showQRCode(acc.gh, 'GitHub')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:github-logo-duotone" class="h-8 w-8" />
-        </div>
-      </span>
-      <span v-if="acc.l" class="p-1">
-        <div @click="showQRCode(acc.l, 'LinkedIn')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="ph:linkedin-logo-duotone" class="h-8 w-8" />
-        </div>
-      </span>
-      <span v-if="acc.fc" class="p-1">
-        <div @click="showQRCode(acc.fc, 'Farcaster')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
-          <Icon icon="material-symbols:garage-door-rounded" class="h-8 w-8" />
+      <span v-if="acc.em" class="p-1">
+        <div @click="showQRCode(`mailto:${acc.em}`, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="mdi:email" class="h-8 w-8" />
         </div>
       </span>
     </div>
@@ -116,14 +111,13 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.f &&
     !props.acc.t &&
     !props.acc.ig &&
-    !props.acc.m &&
-    !props.acc.tg &&
-    !props.acc.w &&
-    !props.acc.y &&
-    !props.acc.e &&
     !props.acc.gh &&
-    !props.acc.l &&
-    !props.acc.fc
+    !props.acc.dc &&
+    !props.acc.tg &&
+    !props.acc.fc &&
+    !props.acc.ph &&
+    !props.acc.w &&
+    !props.acc.em
   );
 });
 </script>
