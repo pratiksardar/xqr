@@ -67,7 +67,7 @@
           :value="twitter"
           @input="$emit('update:twitter', $event.target.value)"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          placeholder="username"
+          placeholder="username(only)"
         />
       </div>
       <Modal :visible="qrCodeUrl === twitter" @close="qrCodeUrl = null">
@@ -216,7 +216,7 @@
           :value="youtube"
           @input="$emit('update:youtube', $event.target.value)"
           class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          placeholder="channel ID"
+          placeholder="@channelID"
         />
       </div>
       <Modal :visible="qrCodeUrl === youtube" @close="qrCodeUrl = null">
