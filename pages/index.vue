@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen flex flex-col md:grid md:grid-cols-3 md:divide-x">
+  <div class="h-screen flex flex-col md:grid md:grid-cols-3 md:divide-x">
     <div class="flex-1 md:col-span-2 h-screen flex flex-col bg-slate-100">
       <div class="flex-1 overflow-y-auto p-8">
         <app-form-profile
@@ -25,43 +25,42 @@
         <app-form-hr />
         <app-form-links v-model="data.ls" />
       </div>
-      <div class="border-t bg-white flex items-center">
-        <button
-          @click="prefillDemoData"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-        >
-          <span> Add demo data </span>
-          <Icon icon="mdi:code-json" class="h-4 w-4" />
-        </button>
-        <button
-          @click="publish"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-        >
-          <span> Publish </span>
-          <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
-        </button>
-        <!-- href="https://github.com/fayazara/onelink" -->
-        <a
-          href="https://github.com/pratiksardar/xqr"
-          target="_blank"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-        >
-          <span> Github </span>
-          <Icon icon="mdi:github" class="h-4 w-4" />
-        </a>
-      </div>
     </div>
     <div class="md:col-span-1 h-screen flex flex-col bg-white">
+      <div class="flex-1 overflow-y-auto">
+        <app-form-preview :data="data" />
+      </div>
+    </div>
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-4">
+      <button
+        @click="prefillDemoData"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+      >
+        <span> Add demo data </span>
+        <Icon icon="mdi:code-json" class="h-4 w-4" />
+      </button>
+      <button
+        @click="publish"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+      >
+        <span> Publish </span>
+        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
+      </button>
+      <a
+        href="https://github.com/fayazara/onelink"
+        target="_blank"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+      >
+        <span> Github </span>
+        <Icon icon="mdi:github" class="h-4 w-4" />
+      </a>
       <button
         @click="togglePreview"
-        class="md:hidden h-12 flex items-center justify-center bg-gray-500 text-white"
+        class="h-12 flex items-center justify-center bg-gray-700 text-white"
       >
         <span v-if="showPreview">Hide Preview</span>
         <span v-else>Show Preview</span>
       </button>
-      <div v-show="showPreview" class="flex-1 overflow-y-auto">
-        <app-form-preview :data="data" />
-      </div>
     </div>
   </div>
 </template>
@@ -99,7 +98,7 @@ const togglePreview = () => {
 
 const prefillDemoData = () => {
   data.value = {
-    n: "Pratik ",
+    n: "John Snow ",
     d: "I’m John Snow, the king in the north. I know Nothing.",
     i: "https://i.insider.com/56743fad72f2c12a008b6cc0",
     em: "northking@gmail.com",
