@@ -1,6 +1,6 @@
 <template>
-  <div class="h-screen grid grid-cols-3 divide-x">
-    <div class="col-span-2 h-screen flex flex-col bg-slate-100">
+    <div class="h-screen flex flex-col md:grid md:grid-cols-3 md:divide-x">
+    <div class="flex-1 md:col-span-2 h-screen flex flex-col bg-slate-100">
       <div class="flex-1 overflow-y-auto p-8">
         <app-form-profile
           v-model:name="data.n"
@@ -41,7 +41,8 @@
           <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
         </button>
         <a
-          href="https://github.com/fayazara/onelink"
+          <!-- href="https://github.com/fayazara/onelink" -->
+          href="https://github.com/pratiksardar/xqr"
           target="_blank"
           class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
         >
@@ -50,21 +51,29 @@
         </a>
       </div>
     </div>
-    <app-form-preview :data="data" />
-    <a
-      href="https://twitter.com/fayazara"
-      target="_blank"
-      class="absolute bottom-0 right-0 bg-white rounded-tl-lg shadow px-4 py-1 font-medium text-sm text-gray-500"
-    >
-      Made by Fayaz
-    </a>
+    <div class="md:col-span-1 h-screen flex flex-col bg-white">
+      <button
+        @click="togglePreview"
+        class="md:hidden h-12 flex items-center justify-center bg-blue-500 text-white"
+      >
+        <span v-if="showPreview">Hide Preview</span>
+        <span v-else>Show Preview</span>
+      </button>
+      <div v-if="showPreview" class="flex-1 overflow-y-auto">
+        <app-form-preview :data="data" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import AppFormProfile from '~/components/AppForm/Profile.vue'
+import AppFormHr from '~/components/AppForm/Hr.vue'
+import AppFormSocialLinks from '~/components/AppForm/SocialLinks.vue'
+import AppFormLinks from '~/components/AppForm/Links.vue'
+import AppFormPreview from '~/components/AppForm/Preview.vue'
 import { Icon } from '@iconify/vue'
-import { encodeData } from "../utils/transformer"
 
 const data = ref({
   n: "",
@@ -81,6 +90,12 @@ const data = ref({
   y: "",
   ls: [],
 })
+
+const showPreview = ref(true)
+
+const togglePreview = () => {
+  showPreview.value = !showPreview.value
+}
 
 const prefillDemoData = () => {
   data.value = {
@@ -100,39 +115,16 @@ const prefillDemoData = () => {
     fc: "john_web3",
     
     ls: [
-      {
-        l: "My Website",
-        i: "ph:globe-duotone",
-        u: "https://pratiksardar.github.io",
-      },
-      {
-        l: "Amazon wishlist",
-        i: "ant-design:amazon-outlined",
-        u: "https://amazon.in",
-      },
-      {
-        l: "React JS course",
-        i: "grommet-icons:reactjs",
-        u: "https://reactjs.org/",
-      },
-      {
-        l: "Donate for our cause",
-        i: "iconoir:donate",
-        u: "https://who.int",
-      },
-      {
-        l: "Download my resume",
-        i: "ph:file-pdf",
-        u: "https://google.com",
-      },
-    ],
+      { l: 'My Website', i: 'ph:globe-duotone', u: 'https://example.com' },
+      { l: 'Blog', i: 'mdi:blog', u: 'https://blog.example.com' }
+    ]
   }
 }
 
 const publish = () => {
   const url = `${window.location.origin}/1?data=${encodeData(data.value)}`
   navigator.clipboard.writeText(url).then(() => {
-    alert("Link copied to clipboard")
+    alert('Link copied to clipboard')
   })
 }
 </script>

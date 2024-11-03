@@ -16,9 +16,9 @@
     </div>
     <div
       v-if="!allSocialLinksAreEmpty"
-      class="flex items-center justify-center flex-wrap"
+      class="flex items-center justify-center flex-wrap space-x-2 space-y-2"
     >
-    <span v-if="acc.em" class="p-1">
+      <span v-if="acc.em" class="p-1">
         <div @click="showQRCode(`mailto:${acc.em}`, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="mdi:email" class="h-8 w-8" />
         </div>
@@ -53,7 +53,6 @@
           <Icon icon="entypo-social:facebook" class="h-8 w-8" />
         </div>
       </span>
-
       <span v-if="acc.ig" class="p-1">
         <div @click="showQRCode(`https://instagram.com/${acc.ig}`, 'Instagram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:instagram-logo-duotone" class="h-8 w-8" />
@@ -69,21 +68,16 @@
           <Icon icon="entypo-social:github" class="h-8 w-8" />
         </div>
       </span>
-
       <span v-if="acc.dc" class="p-1">
         <div @click="showQRCode(`https://discord.com/users/${acc.dc}`, 'Discord')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="ph:discord-logo-duotone" class="h-8 w-8" />
         </div>
       </span>
-
       <span v-if="acc.fc" class="p-1">
         <div @click="showQRCode(`https://farcaster.xyz/${acc.fc}`, 'Farcaster')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
           <Icon icon="material-symbols:fort-outline" class="h-8 w-8" />
         </div>
       </span>
-
-
-
     </div>
     <ul class="space-y-2">
       <ExternalLink
@@ -133,6 +127,7 @@ const allSocialLinksAreEmpty = computed(() => {
     !props.acc.fc &&
     !props.acc.ph &&
     !props.acc.w &&
+    !props.acc.l &&
     !props.acc.em
   );
 });
