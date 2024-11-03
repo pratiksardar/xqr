@@ -54,12 +54,12 @@
     <div class="md:col-span-1 h-screen flex flex-col bg-white">
       <button
         @click="togglePreview"
-        class="md:hidden h-12 flex items-center justify-center bg-blue-500 text-white"
+        class="md:hidden h-12 flex items-center justify-center bg-gray-500 text-white"
       >
         <span v-if="showPreview">Hide Preview</span>
         <span v-else>Show Preview</span>
       </button>
-      <div v-if="showPreview" class="flex-1 overflow-y-auto">
+      <div v-show="showPreview" class="flex-1 overflow-y-auto">
         <app-form-preview :data="data" />
       </div>
     </div>
@@ -91,7 +91,7 @@ const data = ref({
   ls: [],
 })
 
-const showPreview = ref(true)
+const showPreview = ref(false)
 
 const togglePreview = () => {
   showPreview.value = !showPreview.value
