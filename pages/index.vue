@@ -15,9 +15,12 @@
           v-model:github="data.gh"
           v-model:telegram="data.tg"
           v-model:linkedin="data.l"
-          v-model:email="data.e"
+          v-model:email="data.em"
           v-model:whatsapp="data.w"
           v-model:youtube="data.y"
+          v-model:phone="data.ph"
+          v-model:discord="data.dc"
+          v-model:farcaster="data.fc"
         />
         <app-form-hr />
         <app-form-links v-model="data.ls" />
@@ -81,23 +84,26 @@ const data = ref({
 
 const prefillDemoData = () => {
   data.value = {
-    n: "John Snow",
+    n: "Pratik ",
     d: "I’m John Snow, the king in the north. I know Nothing.",
     i: "https://i.insider.com/56743fad72f2c12a008b6cc0",
-    f: "https://www.facebook.com/john_snow",
-    t: "https://twitter.com/john_snow",
-    ig: "https://www.instagram.com/john_snow",
-    e: "mail@john_snow.cc",
-    gh: "https://github.com/john_snow",
-    tg: "https://t.me/john_snow",
-    w: "+918888888888",
-    y: "https://youtube.com/@john_snow",
-    l: "https://linkedin.com/john_snow",
+    em: "northking@gmail.com",
+    ph: "+919999999999",
+    t: "john_snow",
+    tg: "john_tg",
+    w: "+919999999999",
+    f: "john_snow",
+    ig: "ursjohn",
+    gh: "geekyjohn",
+    y: "@johnsnowYT",
+    l: "john_snow",
+    fc: "john_web3",
+    
     ls: [
       {
         l: "My Website",
         i: "ph:globe-duotone",
-        u: "https://example.com",
+        u: "https://pratiksardar.github.io",
       },
       {
         l: "Amazon wishlist",
