@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import QRCode from 'QrCode'
+import QRCode from 'qrcode'
 
 export default {
   props: {
