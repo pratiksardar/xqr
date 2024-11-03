@@ -27,7 +27,14 @@
       </div>
     </div>
     <div class="md:col-span-1 h-screen flex flex-col bg-white">
-      <div class="flex-1 overflow-y-auto">
+      <button
+        @click="togglePreview"
+        class="md:hidden h-12 flex items-center justify-center bg-blue-500 text-white"
+      >
+        <span v-if="showPreview">Hide Preview</span>
+        <span v-else>Show Preview</span>
+      </button>
+      <div v-if="showPreview" class="flex-1 overflow-y-auto">
         <app-form-preview :data="data" />
       </div>
     </div>
@@ -75,22 +82,23 @@ import AppFormPreview from '~/components/AppForm/Preview.vue'
 import { Icon } from '@iconify/vue'
 
 const data = ref({
-  n: "",
-  d: "",
-  i: "",
-  f: "",
-  t: "",
-  ig: "",
-  gh: "",
-  tg: "",
-  l: "",
-  e: "",
-  w: "",
-  y: "",
-  ls: [],
+  n: '',
+  d: '',
+  i: '',
+  f: '',
+  t: '',
+  ig: '',
+  gh: '',
+  dc: '',
+  tg: '',
+  fc: '',
+  ph: '',
+  w: '',
+  em: '',
+  ls: []
 })
 
-const showPreview = ref(false)
+const showPreview = ref(false) // Set to false by default
 
 const togglePreview = () => {
   showPreview.value = !showPreview.value
@@ -98,21 +106,20 @@ const togglePreview = () => {
 
 const prefillDemoData = () => {
   data.value = {
-    n: "John Snow ",
-    d: "I’m John Snow, the king in the north. I know Nothing.",
-    i: "https://i.insider.com/56743fad72f2c12a008b6cc0",
-    em: "northking@gmail.com",
-    ph: "+919999999999",
-    t: "john_snow",
-    tg: "john_tg",
-    w: "+919999999999",
-    f: "john_snow",
-    ig: "ursjohn",
-    gh: "geekyjohn",
-    y: "@johnsnowYT",
-    l: "john_snow",
-    fc: "john_web3",
-    
+    n: 'John Snow ',
+    d: 'I’m John Snow, the king in the north. I know Nothing.',
+    i: 'https://i.insider.com/56743fad72f2c12a008b6cc0',
+    em: 'northking@gmail.com',
+    ph: '+919999999999',
+    t: 'john_snow',
+    tg: 'john_tg',
+    w: '+919999999999',
+    f: 'john_snow',
+    ig: 'ursjohn',
+    gh: 'geekyjohn',
+    y: '@johnsnowYT',
+    l: 'john_snow',
+    fc: 'john_web3',
     ls: [
       { l: 'My Website', i: 'ph:globe-duotone', u: 'https://example.com' },
       { l: 'Blog', i: 'mdi:blog', u: 'https://blog.example.com' }
