@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen flex flex-col md:grid md:grid-cols-3 md:divide-x">
-    <div class="flex-1 md:col-span-2 h-screen flex flex-col bg-slate-100">
+    <div :class="{'flex-1': !showPreview, 'md:col-span-2': showPreview, 'h-screen': true, 'flex': true, 'flex-col': true, 'bg-slate-100': true}">
       <div class="flex-1 overflow-y-auto p-8">
         <app-form-profile
           v-model:name="data.n"
@@ -26,15 +26,8 @@
         <app-form-links v-model="data.ls" />
       </div>
     </div>
-    <div class="md:col-span-1 h-screen flex flex-col bg-white">
-      <button
-        @click="togglePreview"
-        class="md:hidden h-12 flex items-center justify-center bg-blue-500 text-white"
-      >
-        <span v-if="showPreview">Hide Preview</span>
-        <span v-else>Show Preview</span>
-      </button>
-      <div v-if="showPreview" class="flex-1 overflow-y-auto">
+    <div v-if="showPreview" class="md:col-span-1 h-screen flex flex-col bg-white">
+      <div class="flex-1 overflow-y-auto">
         <app-form-preview :data="data" />
       </div>
     </div>
@@ -63,7 +56,7 @@
       </a>
       <button
         @click="togglePreview"
-        class="h-12 flex items-center justify-center bg-gray-700 text-white"
+        class="h-12 flex items-center justify-center bg-gray-600 text-white"
       >
         <span v-if="showPreview">Hide Preview</span>
         <span v-else>Show Preview</span>
