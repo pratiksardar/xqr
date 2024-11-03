@@ -1,40 +1,72 @@
 <template>
-  <main>
-    <div class="flex space-x-4">
-      <span v-if="acc.gh" class="p-1">
-        <ExternalLink
-          label="GitHub"
-          icon="ph:github-logo-duotone"
-          :url="acc.gh"
-        />
-      </span>
-      <span v-if="acc.l" class="p-1">
-        <ExternalLink
-          label="LinkedIn"
-          icon="ph:linkedin-logo-duotone"
-          :url="acc.l"
-        />
-      </span>
-      <span v-if="acc.ig" class="p-1">
-        <ExternalLink
-          label="Instagram"
-          icon="ph:instagram-logo-duotone"
-          :url="acc.ig"
-        />
+  <main class="p-4 bg-white h-full w-full space-y-8 pt-12 max-w-lg mx-auto">
+    <div class="text-center">
+      <div
+        v-if="acc.i"
+        class="h-20 w-20 rounded-full overflow-hidden ring ring-slate-200 mx-auto"
+      >
+        <img :src="acc.i" alt="name" class="h-full w-full object-cover" />
+      </div>
+      <h1 v-if="acc.n" class="text-2xl font-bold mt-4 text-slate-800">
+        {{ acc.n }}
+      </h1>
+      <p v-if="acc.d" class="text-sm mt-2 text-slate-600">
+        {{ acc.d }}
+      </p>
+    </div>
+    <div
+      v-if="!allSocialLinksAreEmpty"
+      class="flex items-center justify-center flex-wrap"
+    >
+      <span v-if="acc.f" class="p-1">
+        <div @click="showQRCode(acc.f, 'Facebook')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:facebook-logo-duotone" class="h-8 w-8" />
+        </div>
       </span>
       <span v-if="acc.t" class="p-1">
-        <ExternalLink
-          label="Twitter"
-          icon="ph:twitter-logo-duotone"
-          :url="acc.t"
-        />
+        <div @click="showQRCode(acc.t, 'Twitter')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:twitter-logo-duotone" class="h-8 w-8" />
+        </div>
       </span>
-      <span v-if="acc.f" class="p-1">
-        <ExternalLink
-          label="Facebook"
-          icon="ph:facebook-logo-duotone"
-          :url="acc.f"
-        />
+      <span v-if="acc.ig" class="p-1">
+        <div @click="showQRCode(acc.ig, 'Instagram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:instagram-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.m" class="p-1">
+        <div @click="showQRCode(acc.m, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:envelope-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.tg" class="p-1">
+        <div @click="showQRCode(acc.tg, 'Telegram')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:telegram-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.w" class="p-1">
+        <div @click="showQRCode(`https://wa.me/${acc.w}`, 'WhatsApp')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:whatsapp-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.y" class="p-1">
+        <div @click="showQRCode(acc.y, 'YouTube')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:youtube-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.e" class="p-1">
+        <div @click="showQRCode(`mailto:${acc.e}`, 'Email')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:envelope-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.gh" class="p-1">
+        <div @click="showQRCode(acc.gh, 'GitHub')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:github-logo-duotone" class="h-8 w-8" />
+        </div>
+      </span>
+      <span v-if="acc.l" class="p-1">
+        <div @click="showQRCode(acc.l, 'LinkedIn')" class="cursor-pointer transform transition-transform duration-300 hover:scale-110">
+          <Icon icon="ph:linkedin-logo-duotone" class="h-8 w-8" />
+        </div>
       </span>
     </div>
     <ul class="space-y-2">
@@ -46,16 +78,50 @@
         :key="id"
       />
     </ul>
+    <Modal :visible="qrCodeUrl !== null" :platformName="qrCodePlatform" :url="qrCodeUrl" @close="qrCodeUrl = null">
+      <QrCode :text="qrCodeUrl" />
+    </Modal>
   </main>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+import { Icon } from '@iconify/vue'
+import QrCode from '../QrCode.vue'
+import Modal from '../Modal.vue'
+import ExternalLink from '../ExternalLink.vue'
+
 const props = defineProps({
   acc: {
     type: Object,
     required: true,
   },
 });
+
+const qrCodeUrl = ref(null)
+const qrCodePlatform = ref('')
+
+const showQRCode = (url, platform) => {
+  qrCodeUrl.value = url
+  qrCodePlatform.value = platform
+}
+
+const allSocialLinksAreEmpty = computed(() => {
+  return (
+    !props.acc.f &&
+    !props.acc.t &&
+    !props.acc.ig &&
+    !props.acc.m &&
+    !props.acc.tg &&
+    !props.acc.w &&
+    !props.acc.y &&
+    !props.acc.e &&
+    !props.acc.gh &&
+    !props.acc.l
+  );
+});
 </script>
 
-<style scoped></style>
+<style scoped>
+/* Add any additional styles if needed */
+</style>

@@ -14,7 +14,7 @@
       class="list-group"
       ghost-class="ghost"
     >
-      <template #item="{ element: link }">
+      <template #item="{ element: link, index }">
         <div class="relative mb-6 group">
           <button class="absolute top-2 -left-8">
             <Icon
@@ -22,17 +22,32 @@
               class="h-6 w-6 text-slate-500 drag-handle"
             />
           </button>
-          <button @click="removeLink(link)" class="absolute top-2 -right-8">
+          <button @click="removeLink(index)" class="absolute top-2 -right-8">
             <Icon
               icon="radix-icons:trash"
               class="h-6 w-6 text-slate-500"
             />
           </button>
-          <ExternalLink
-            :label="link.label"
-            :icon="link.icon"
-            :url="link.url"
-          />
+          <div class="flex items-center space-x-2">
+            <input
+              type="text"
+              v-model="link.l"
+              placeholder="Label"
+              class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+            <input
+              type="text"
+              v-model="link.i"
+              placeholder="Icon"
+              class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+            <input
+              type="url"
+              v-model="link.u"
+              placeholder="URL"
+              class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
         </div>
       </template>
     </draggable>
@@ -45,7 +60,7 @@
 <script setup>
 import draggable from 'vuedraggable'
 import { Icon } from '@iconify/vue'
-import ExternalLink from '../ExternalLink.vue'
+import { ref } from 'vue'
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
@@ -54,15 +69,14 @@ const props = defineProps({
 
 const appendLink = () => {
   props.modelValue.push({
-    label: '',
-    icon: '',
-    url: '',
+    l: '',
+    i: '',
+    u: '',
   })
   emit('update:modelValue', props.modelValue)
 }
 
-const removeLink = (link) => {
-  const index = props.modelValue.indexOf(link)
+const removeLink = (index) => {
   props.modelValue.splice(index, 1)
   emit('update:modelValue', props.modelValue)
 }

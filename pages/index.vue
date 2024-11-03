@@ -28,14 +28,14 @@
           class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
         >
           <span> Add demo data </span>
-          <icon name="mdi:code-json" class="h-4 w-4" />
+          <Icon icon="mdi:code-json" class="h-4 w-4" />
         </button>
         <button
           @click="publish"
           class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
         >
           <span> Publish </span>
-          <icon name="ph:paper-plane-tilt-bold" class="h-4 w-4" />
+          <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
         </button>
         <a
           href="https://github.com/fayazara/onelink"
@@ -43,7 +43,7 @@
           class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
         >
           <span> Github </span>
-          <icon name="mdi:github" class="h-4 w-4" />
+          <Icon icon="mdi:github" class="h-4 w-4" />
         </a>
       </div>
     </div>
@@ -59,7 +59,10 @@
 </template>
 
 <script setup>
-import { encodeData } from "../utils/transformer";
+import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
+import { encodeData } from "../utils/transformer"
+
 const data = ref({
   n: "",
   d: "",
@@ -74,7 +77,7 @@ const data = ref({
   w: "",
   y: "",
   ls: [],
-});
+})
 
 const prefillDemoData = () => {
   data.value = {
@@ -117,13 +120,13 @@ const prefillDemoData = () => {
         u: "https://google.com",
       },
     ],
-  };
-};
+  }
+}
 
 const publish = () => {
-  const url = `${window.location.origin}/1?data=${encodeData(data.value)}`;
+  const url = `${window.location.origin}/1?data=${encodeData(data.value)}`
   navigator.clipboard.writeText(url).then(() => {
-    alert("Link copied to clipboard");
-  });
-};
+    alert("Link copied to clipboard")
+  })
+}
 </script>

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <base-form-section title="Social Links" description="Add socials here"></base-form-section>
+  <div class="grid grid-cols-2 gap-4">
     <!-- Facebook -->
     <div>
       <label for="facebook" class="block text-sm font-medium text-gray-700">Facebook</label>
@@ -124,8 +125,137 @@
         <QrCode :text="youtube" />
       </Modal>
     </div>
+    <!-- Add a + button to add custom social media link like Github , wrapcast , snapchat etc and match icons based on the name provided -->
+    <!-- Custom Social Media Links -->
+    <!-- <div>
+      <button
+      @click="addCustomLink"
+      class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+      + Add Custom Link
+      </button>
+    </div>
+    <div v-for="(link, index) in customLinks" :key="index" class="mt-4">
+      <label :for="'custom-link-' + index" class="block text-sm font-medium text-gray-700">{{ link.name }}</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+      <span
+        class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
+        @click="showQRCode(link.url)"
+      >
+        <Icon :icon="getIcon(link.name)" class="w-5 h-5" />
+      </span>
+      <input
+        type="url"
+        :name="'custom-link-' + index"
+        :id="'custom-link-' + index"
+        v-model="link.url"
+        class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+        :placeholder="'https://' + link.name + '.com/username'"
+      />
+      </div>
+      <Modal :visible="qrCodeUrl === link.url" @close="qrCodeUrl = null">
+      <QrCode :text="link.url" />
+      </Modal>
+    </div> -->
+    <!-- Github -->
+    <div>
+      <label for="github" class="block text-sm font-medium text-gray-700">Github</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <span
+          class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
+          @click="showQRCode(github)"
+        >
+          <Icon icon="ph:github-logo-duotone" class="w-5 h-5" />
+        </span>
+        <input
+          type="url"
+          name="github"
+          id="github"
+          :value="github"
+          @input="$emit('update:github', $event.target.value)"
+          class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          placeholder="https://github.com/username"
+        />
+      </div>
+      <Modal :visible="qrCodeUrl === github" @close="qrCodeUrl = null">
+        <QrCode :text="github" />
+      </Modal>
+    </div>
 
-    <!-- Add other social media links similarly -->
+    <!-- Discord -->
+    <div>
+      <label for="discord" class="block text-sm font-medium text-gray-700">Discord</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <span
+          class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
+          @click="showQRCode(discord)"
+        >
+          <Icon icon="ph:discord-logo-duotone" class="w-5 h-5" />
+        </span>
+        <input
+          type="url"
+          name="discord"
+          id="discord"
+          :value="discord"
+          @input="$emit('update:discord', $event.target.value)"
+          class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          placeholder="https://discord.com/users/username"
+        />
+      </div>
+      <Modal :visible="qrCodeUrl === discord" @close="qrCodeUrl = null">
+        <QrCode :text="discord" />
+      </Modal>
+    </div>
+
+    <!-- Telegram -->
+    <div>
+      <label for="telegram" class="block text-sm font-medium text-gray-700">Telegram</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <span
+          class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
+          @click="showQRCode(telegram)"
+        >
+          <Icon icon="ph:telegram-logo-duotone" class="w-5 h-5" />
+        </span>
+        <input
+          type="url"
+          name="telegram"
+          id="telegram"
+          :value="telegram"
+          @input="$emit('update:telegram', $event.target.value)"
+          class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          placeholder="https://t.me/username"
+        />
+      </div>
+      <Modal :visible="qrCodeUrl === telegram" @close="qrCodeUrl = null">
+        <QrCode :text="telegram" />
+      </Modal>
+    </div>
+
+    <!-- Farcaster -->
+    <div>
+      <label for="wrapcast" class="block text-sm font-medium text-gray-700">Farcaster</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <span
+          class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 cursor-pointer"
+          @click="showQRCode(wrapcast)"
+        >
+          <Icon icon="gravity-ui:tv-retro" class="w-5 h-5" />
+        </span>
+        <input
+          type="url"
+          name="wrapcast"
+          id="wrapcast"
+          :value="wrapcast"
+          @input="$emit('update:wrapcast', $event.target.value)"
+          class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          placeholder="https://wrapcast.com/username"
+        />
+      </div>
+      <Modal :visible="qrCodeUrl === wrapcast" @close="qrCodeUrl = null">
+        <QrCode :text="wrapcast" />
+      </Modal>
+    </div>
   </div>
 </template>
 
