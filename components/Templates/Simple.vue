@@ -93,6 +93,8 @@
       <QrCode :text="qrCodeUrl" />
     </Modal>
   </main>
+    <div class="border-b border-gray-300 mb-4"></div>
+
 </template>
 
 <script setup>

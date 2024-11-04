@@ -1,5 +1,6 @@
 <template>
-  <div class="grid grid-cols-2 gap-4">
+  <div class="grid grid-cols-2 gap-2 mt-5">
+    <h3 class="text-xl text-gray-800 col-span-2">Social Links</h3>
     <!-- Email -->
     <div>
       <label for="email" class="block text-sm font-medium text-gray-700">Email</label>

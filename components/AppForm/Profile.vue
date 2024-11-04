@@ -51,6 +51,7 @@
           />
         </div>
       </div>
+      <hr class="border-gray-500 mt-2" />
     </div>
   </base-form-section>
 </template>

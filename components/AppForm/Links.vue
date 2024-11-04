@@ -1,5 +1,6 @@
 <template>
-  <base-form-section title="Links" description="Add some links here">
+  <div class="mt-4 border-b border-gray-400 -ml-4 mb-4 p-2"></div>
+  <base-form-section title="Custom Links" description="Add some links here and drag to arrange" class="text-xl">
     <template #helpertext>
       <p class="mt-1 text-xs text-gray-600">
         Icon keys can be found in
@@ -8,6 +9,12 @@
         >.
       </p>
     </template>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-medium text-gray-900">Add Link</h3>
+      <button @click="appendLink" class="ml-4">
+        <Icon icon="fluent:add-circle-24-regular" class="h-6 w-6 text-blue-500" />
+      </button>
+    </div>
     <draggable
       :list="modelValue"
       item-key="link"
@@ -22,12 +29,7 @@
               class="h-6 w-6 text-slate-500 drag-handle"
             />
           </button>
-          <button @click="removeLink(index)" class="absolute top-2 -right-8">
-            <Icon
-              icon="radix-icons:trash"
-              class="h-6 w-6 text-slate-500"
-            />
-          </button>
+
           <div class="flex items-center space-x-2">
             <input
               type="text"
@@ -48,12 +50,15 @@
               class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
           </div>
+            <button @click="removeLink(index)" class="ml-2 mt-2">
+            <Icon
+              icon="radix-icons:trash"
+              class="h-6 w-6 text-red-500"
+            />
+          </button>
         </div>
       </template>
     </draggable>
-    <button @click="appendLink" class="mt-4">
-      <Icon icon="fluent:add-circle-24-regular" class="h-6 w-6" />
-    </button>
   </base-form-section>
 </template>
 
@@ -61,12 +66,10 @@
 import draggable from 'vuedraggable'
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue'
-
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: Array,
 })
-
 const appendLink = () => {
   props.modelValue.push({
     l: '',
@@ -75,7 +78,6 @@ const appendLink = () => {
   })
   emit('update:modelValue', props.modelValue)
 }
-
 const removeLink = (index) => {
   props.modelValue.splice(index, 1)
   emit('update:modelValue', props.modelValue)
