@@ -9,7 +9,7 @@
         <a :href="url" target="_blank" class="text-blue-500 underline">
           {{ username }}
         </a>
-        <div class="p-4 bg-gray-100 rounded-lg shadow-inner mt-4">
+        <div class="p-4 bg-gray-200 rounded-lg shadow-inner mt-4 flex justify-center items-center">
           <slot></slot>
         </div>
       </div>

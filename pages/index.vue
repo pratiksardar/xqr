@@ -33,7 +33,7 @@
       <app-form-preview :data="data" />
       </div>
     </div>
-    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-4">
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-2">
       <button
       @click="prefillDemoData"
       class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
@@ -44,7 +44,7 @@
       <div class="flex space-x-3">
         <button
         @click="togglePreview"
-        class="h-12 flex items-center justify-center bg-gray-500 text-white px-4 py-2 rounded-full"
+        class="h-12 flex items-center justify-center bg-gray-500 text-white px-6 py- rounded-full"
       >
         <span v-if="showPreview">Hide Preview</span>
         <span v-else>Show Preview</span>
@@ -54,7 +54,7 @@
         class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-green-500 text-white rounded-full"
       >
         <span> Publish & Generate Card </span>
-        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
+        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-7" />
       </button>
       </div>
       <a

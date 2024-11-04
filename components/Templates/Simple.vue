@@ -81,11 +81,12 @@
     </div>
     <ul class="space-y-2">
       <ExternalLink
-        v-for="(link, id) in acc.ls"
-        :label="link.l"
-        :icon="link.i"
-        :url="link.u"
-        :key="id"
+      v-for="(link, id) in acc.ls"
+      :label="link.l"
+      :icon="link.i"
+      :url="link.u"
+      :key="id"
+      @click="showQRCode(link.u, link.l)"
       />
     </ul>
     <Modal :visible="qrCodeUrl !== null" :platformName="qrCodePlatform" :url="qrCodeUrl" @close="qrCodeUrl = null">
