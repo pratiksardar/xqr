@@ -6,9 +6,16 @@
         <Icon v-else icon="ph:link-simple" class="h-5 w-5" />
       </div>
       <div class="w-full flex-grow min-w-0">
-        <a :href="url" target="_blank" class="font-medium text-sm leading-6 text-blue-500 underline">
-          {{ label }}
-        </a>
+        <template v-if="isUrl">
+          <a :href="url" target="_blank" class="font-medium text-sm leading-6 text-blue-500 underline">
+            {{ label }}
+          </a>
+        </template>
+        <template v-else>
+          <p class="font-medium text-sm leading-6 text-gray-900">
+            {{ label }}
+          </p>
+        </template>
       </div>
       <button @click="showQRCode(url, label)" class="ml-2">
         <Icon icon="mdi:qrcode" class="h-8 w-8 text-gray-500" />
@@ -36,6 +43,9 @@ const qrCodeUrl = ref(null)
 const showQRCode = (linkUrl) => {
   qrCodeUrl.value = linkUrl
 }
+const isUrl = computed(() => {
+  return props.url.startsWith('https://') || props.url.startsWith('http://')
+})
 </script>
 
 <style scoped>
