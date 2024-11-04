@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen flex flex-col md:grid md:grid-cols-3 md:divide-x">
-    <div :class="{'flex-1': !showPreview, 'md:col-span-2': showPreview, 'h-screen': true, 'flex': true, 'flex-col': true, 'bg-slate-100': true}">
-      <div class="flex-1 overflow-y-auto p-8">
+  <div class="h-screen flex flex-col md:flex-row">
+    <div :class="{'flex-1': !showPreview, 'md:w-2/3': showPreview, 'h-screen': true, 'flex': true, 'flex-col': true, 'bg-slate-100': true, 'items-center': !showPreview, 'justify-center': !showPreview, 'p-8': true}">
+      <div :class="{'w-full': !showPreview, 'flex-1': showPreview, 'overflow-y-auto': true, 'md:w-2/3': !showPreview}">
         <app-form-profile
           v-model:name="data.n"
           v-model:desc="data.d"
@@ -26,7 +26,7 @@
         <app-form-links v-model="data.ls" />
       </div>
     </div>
-    <div v-if="showPreview" class="md:col-span-1 h-screen flex flex-col bg-white">
+    <div v-if="showPreview" class="md:w-1/3 h-screen flex flex-col bg-white">
       <div class="flex-1 overflow-y-auto">
         <app-form-preview :data="data" />
       </div>
@@ -36,31 +36,33 @@
         @click="prefillDemoData"
         class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
-        <span> Add demo data </span>
+        <span> Fill Demo data </span>
         <Icon icon="mdi:code-json" class="h-4 w-4" />
       </button>
-      <button
-        @click="publish"
-        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
-      >
-        <span> Publish </span>
-        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
-      </button>
+      <div class="flex space-x-2">
+        <button
+          @click="publish"
+          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-blue-500 text-white rounded-full"
+        >
+          <span> Publish & Generate Card </span>
+          <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
+        </button>
+        <button
+          @click="togglePreview"
+          class="h-12 flex items-center justify-center bg-gray-500 text-white px-4 py-2 rounded-full"
+        >
+          <span v-if="showPreview">Hide Preview</span>
+          <span v-else>Show Preview</span>
+        </button>
+      </div>
       <a
-        href="https://github.com/fayazara/onelink"
+        href="https://github.com/pratiksardar/xqr"
         target="_blank"
         class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
         <span> Github </span>
         <Icon icon="mdi:github" class="h-4 w-4" />
       </a>
-      <button
-        @click="togglePreview"
-        class="h-12 flex items-center justify-center bg-gray-600 text-white"
-      >
-        <span v-if="showPreview">Hide Preview</span>
-        <span v-else>Show Preview</span>
-      </button>
     </div>
   </div>
 </template>
