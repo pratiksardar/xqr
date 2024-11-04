@@ -24,46 +24,48 @@
         />
         <app-form-hr />
         <app-form-links v-model="data.ls" />
+        <div class="h-16"></div> <!-- Add some spacing at the bottom -->
       </div>
     </div>
+
     <div v-if="showPreview" class="md:w-1/3 h-screen flex flex-col bg-white">
       <div class="flex-1 overflow-y-auto">
-        <app-form-preview :data="data" />
+      <app-form-preview :data="data" />
       </div>
     </div>
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-4">
+    <footer class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-4">
       <button
-        @click="prefillDemoData"
-        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+      @click="prefillDemoData"
+      class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
-        <span> Fill Demo data </span>
-        <Icon icon="mdi:code-json" class="h-4 w-4" />
+      <span> Fill Demo data </span>
+      <Icon icon="mdi:code-json" class="h-4 w-4" />
       </button>
-      <div class="flex space-x-2">
+      <div class="flex space-x-3">
         <button
-          @click="publish"
-          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-blue-500 text-white rounded-full"
-        >
-          <span> Publish & Generate Card </span>
-          <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
-        </button>
-        <button
-          @click="togglePreview"
-          class="h-12 flex items-center justify-center bg-gray-500 text-white px-4 py-2 rounded-full"
-        >
-          <span v-if="showPreview">Hide Preview</span>
-          <span v-else>Show Preview</span>
-        </button>
+        @click="togglePreview"
+        class="h-12 flex items-center justify-center bg-gray-500 text-white px-4 py-2 rounded-full"
+      >
+        <span v-if="showPreview">Hide Preview</span>
+        <span v-else>Show Preview</span>
+      </button>
+      <button
+        @click="publish"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-green-500 text-white rounded-full"
+      >
+        <span> Publish & Generate Card </span>
+        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-4" />
+      </button>
       </div>
       <a
-        href="https://github.com/pratiksardar/xqr"
-        target="_blank"
-        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+      href="https://github.com/pratiksardar/xqr"
+      target="_blank"
+      class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
-        <span> Github </span>
-        <Icon icon="mdi:github" class="h-4 w-4" />
+      <span>  </span>
+      <Icon icon="mdi:github" class="h-4 w-4" />
       </a>
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -116,8 +118,8 @@ const prefillDemoData = () => {
     l: 'john_snow',
     fc: 'john_web3',
     ls: [
-      { l: 'My Website', i: 'ph:globe-duotone', u: 'https://example.com' },
-      { l: 'Blog', i: 'mdi:blog', u: 'https://blog.example.com' }
+      { l: 'ETH Wallet', i: 'mdi:wallet', u: '0xF8EE592966AF83F49ec025664b525BCf907B20F5' },
+      { l: 'My Resume', i: 'ph:rocket', u: 'https://rxresu.me/radarsardar/pratik-sardar-q-a-l-e-a-d-11-yo-e' }
     ]
   }
 }
