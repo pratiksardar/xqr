@@ -22,11 +22,10 @@
       item-key="link"
       class="list-group"
       ghost-class="ghost"
+      handle=".drag-handle"
     >
       <template #item="{ element: link, index }">
         <div class="relative mb-6 group">
-
-
           <div class="flex items-center space-x-2">
             <input
               type="text"
@@ -46,14 +45,14 @@
               placeholder="URL"
               class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
-            <button class="ml-2 mt-2">
-            <Icon
-              icon="radix-icons:drag-handle-dots-2"
-              class="h-6 w-6 text-slate-500 drag-handle"
-            />
+            <button class="ml-2 mt-2 drag-handle">
+              <Icon
+                icon="radix-icons:drag-handle-dots-2"
+                class="h-6 w-6 text-slate-500"
+              />
             </button>
           </div>
-            <button @click="removeLink(index)" class="ml-2 mt-2">
+          <button @click="removeLink(index)" class="ml-2 mt-2">
             <Icon
               icon="radix-icons:trash"
               class="h-6 w-6 text-red-500"
