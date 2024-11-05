@@ -10,10 +10,12 @@
       </p>
     </template>
     <div class="flex items-center justify-between mb-4">
-      <h3 class="text-lg font-medium text-gray-900">Add Link</h3>
-      <button @click="appendLink" class="ml-4">
-        <Icon icon="fluent:add-circle-24-regular" class="h-6 w-6 text-blue-500" />
+      <h3 class="text-lg font-medium text-gray-900 flex items-center">
+      Add Link
+      <button @click="appendLink" class="ml-2">
+        <Icon icon="fluent:add-circle-24-regular" class="h-7 w-7 text-blue-500" />
       </button>
+      </h3>
     </div>
     <draggable
       :list="modelValue"
@@ -23,12 +25,7 @@
     >
       <template #item="{ element: link, index }">
         <div class="relative mb-6 group">
-          <button class="absolute top-2 -left-8">
-            <Icon
-              icon="radix-icons:drag-handle-dots-2"
-              class="h-6 w-6 text-slate-500 drag-handle"
-            />
-          </button>
+
 
           <div class="flex items-center space-x-2">
             <input
@@ -49,6 +46,12 @@
               placeholder="URL"
               class="block w-1/3 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />
+            <button class="ml-2 mt-2">
+            <Icon
+              icon="radix-icons:drag-handle-dots-2"
+              class="h-6 w-6 text-slate-500 drag-handle"
+            />
+            </button>
           </div>
             <button @click="removeLink(index)" class="ml-2 mt-2">
             <Icon
@@ -56,6 +59,7 @@
               class="h-6 w-6 text-red-500"
             />
           </button>
+
         </div>
       </template>
     </draggable>

@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen flex flex-col md:flex-row">
-    <div :class="{'flex-1': !showPreview, 'md:w-2/3': showPreview, 'h-screen': true, 'flex': true, 'flex-col': true, 'bg-slate-100': true, 'items-center': !showPreview, 'justify-center': !showPreview, 'p-8': true}">
-      <div :class="{'w-full': !showPreview, 'flex-1': showPreview, 'overflow-y-auto': true, 'md:w-2/3': !showPreview}">
+  <div class="min-h-screen flex flex-col">
+    <div :class="{'flex-1': !showPreview, 'md:w-2/3': showPreview, 'flex': true, 'flex-col': true, 'bg-slate-100': true, 'items-center': !showPreview, 'justify-center': !showPreview, 'p-8': true}">
+      <div :class="{'w-full': !showPreview, 'flex-1': showPreview}">
         <app-form-profile
           v-model:name="data.n"
           v-model:desc="data.d"
@@ -28,42 +28,42 @@
       </div>
     </div>
 
-    <div v-if="showPreview" class="md:w-1/3 h-screen flex flex-col bg-white">
-      <div class="flex-1 overflow-y-auto">
-      <app-form-preview :data="data" />
+    <div v-if="showPreview" class="md:w-1/3 flex flex-col bg-white">
+      <div class="flex-1">
+        <app-form-preview :data="data" />
       </div>
     </div>
     <footer class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-2">
       <button
-      @click="prefillDemoData"
-      class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+        @click="prefillDemoData"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
-      <span> Fill Demo data </span>
-      <Icon icon="mdi:code-json" class="h-4 w-4" />
+        <span> Fill Demo data </span>
+        <Icon icon="mdi:code-json" class="h-4 w-4" />
       </button>
       <div class="flex space-x-3">
         <button
-        @click="togglePreview"
-        class="h-12 flex items-center justify-center bg-gray-500 text-white px-6 py- rounded-full"
-      >
-        <span v-if="showPreview">Hide Preview</span>
-        <span v-else>Show Preview</span>
-      </button>
-      <button
-        @click="publish"
-        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-green-500 text-white rounded-full"
-      >
-        <span> Publish & Generate Card </span>
-        <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-7" />
-      </button>
+          @click="togglePreview"
+          class="h-12 flex items-center justify-center bg-gray-500 text-white px-6 py- rounded-full"
+        >
+          <span v-if="showPreview">Hide Preview</span>
+          <span v-else>Show Preview</span>
+        </button>
+        <button
+          @click="publish"
+          class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-green-500 text-white rounded-full"
+        >
+          <span> Publish & Generate Card </span>
+          <Icon icon="ph:paper-plane-tilt-bold" class="h-4 w-7" />
+        </button>
       </div>
       <a
-      href="https://github.com/pratiksardar/xqr"
-      target="_blank"
-      class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
+        href="https://github.com/pratiksardar/xqr"
+        target="_blank"
+        class="h-12 flex items-center space-x-2 px-4 border-r text-xs font-medium bg-white text-slate-700"
       >
-      <span>  </span>
-      <Icon icon="mdi:github" class="h-4 w-4" />
+        <span>  </span>
+        <Icon icon="mdi:github" class="h-4 w-4" />
       </a>
     </footer>
   </div>
