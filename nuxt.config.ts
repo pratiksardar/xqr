@@ -1,18 +1,17 @@
 export default ({
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-icon', '@vueuse/nuxt'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'nuxt-icon',
+    '@vueuse/nuxt'
+  ],
 
   build: {
-      transpile: ["@headlessui/vue"],
+    transpile: ["@headlessui/vue"],
   },
 
   colorMode: {
-      classSuffix: '',
+    classSuffix: '',
   },
-  buildModules: [
-    ['@nuxtjs/google-analytics', {
-      id: 'G-RKTX9XVN20'
-    }]
-  ],
 
   head: {
     title: 'Share Socials On the Go',
@@ -22,8 +21,32 @@ export default ({
       { hid: 'description', name: 'description', content: 'Allows you to save and share your socials and links quickly' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' }
-    ],},
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-RKTX9XVN20',
+        async: true
+      },
+      {
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-RKTX9XVN20');
+        `,
+        type: 'text/javascript',
+        charset: 'utf-8'
+      }
+    ],
+    __dangerouslyDisableSanitizersByTagID: {
+      'gtag': ['innerHTML']
+    }
+  },
+
+  plugins: [
+    '~/plugins/vercel-analytics.client.js'
+  ],
 
   compatibilityDate: '2024-11-02',
 });
