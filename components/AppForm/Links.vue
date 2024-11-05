@@ -59,7 +59,6 @@
               class="h-6 w-6 text-red-500"
             />
           </button>
-
         </div>
       </template>
     </draggable>

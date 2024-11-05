@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen flex flex-col">
-    <div :class="{'flex-1': !showPreview, 'md:w-2/3': showPreview, 'flex': true, 'flex-col': true, 'bg-slate-100': true, 'items-center': !showPreview, 'justify-center': !showPreview, 'p-8': true}">
+  <div class="min-h-screen flex flex-col md:flex-row">
+    <div :class="{'flex-1': !showPreview, 'md:w-2/3': showPreview, 'w-full': !showPreview, 'flex': true, 'flex-col': true, 'bg-slate-100': true, 'items-center': !showPreview, 'justify-center': !showPreview, 'p-8': true}">
       <div :class="{'w-full': !showPreview, 'flex-1': showPreview}">
         <app-form-profile
           v-model:name="data.n"
@@ -28,9 +28,9 @@
       </div>
     </div>
 
-    <div v-if="showPreview" class="md:w-1/3 flex flex-col bg-white">
+    <div v-if="showPreview" :class="{'md:w-1/3': true, 'w-full': true, 'flex': true, 'flex-col': true, 'bg-white': true}">
       <div class="flex-1">
-        <app-form-preview :data="data" />
+      <app-form-preview :data="data" />
       </div>
     </div>
     <footer class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-between p-2">
