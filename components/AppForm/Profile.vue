@@ -1,7 +1,7 @@
 <template>
   <base-form-section
     title="Profile"
-    description="Some public information about you"
+    description="Add some information about yourself"
   >
     <div class="shadow sm:overflow-hidden sm:rounded-md">
       <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
