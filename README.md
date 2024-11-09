@@ -3,11 +3,17 @@ Build and Ship Nuxt 3 fullstack starter apps with Auth, DB, Payments, Email & Fi
 
 ---
 
+## 
+[Visit XQR here ](https://xqr-drab.vercel.app/)
+
 # xqr - QR codes for sharing you socials quickly 
 
 XQR is tool, where the data lives in the URL, user can easily add their various socails and links and access / share them quickly without hassel of opening saperate apps to browse their own profile links. 
 
 The Link generated can be saved as a bookmark or on your home screen, ready for quick access.. it is your digital visting card with all that stored only with you for privacy.
+
+## Walkthough
+![XQR Walkthrough](./xqr_walkthrough.gif)
 
 > **Note**
 > Since the URL can become very long, it's better to use a link shortener like https://dub.co
