@@ -13,7 +13,9 @@ XQR is tool, where the data lives in the URL, user can easily add their various 
 The Link generated can be saved as a bookmark or on your home screen, ready for quick access.. it is your digital visting card with all that stored only with you for privacy.
 
 ## Walkthough
-![XQR Walkthrough](./xqr_walkthrough.gif)
+<!-- ![XQR Walkthrough](./xqr_walkthrough.gif) -->
+<img src="./xqr_walkthrough.gif"  width="300" height="600">
+
 
 > **Note**
 > Since the URL can become very long, it's better to use a link shortener like https://dub.co
