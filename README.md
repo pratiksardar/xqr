@@ -14,7 +14,7 @@ The Link generated can be saved as a bookmark or on your home screen, ready for 
 
 ## Walkthough
 <!-- ![XQR Walkthrough](./xqr_walkthrough.gif) -->
-<img src="./xqr_walkthrough.gif"  width="300" height="600">
+<img src="./xqr_walkthrough.gif"  width="300" height="480">
 
 
 > **Note**
